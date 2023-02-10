@@ -1,0 +1,18 @@
+service: digital-attitude-back
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  stage: dev
+  region: eu-central-1
+
+functions:
+  app:
+    handler: server.handler
+    events:
+      - http:
+          path: /
+          method: ANY
+      - http:
+          path: /{proxy+}
+          method: ANY
